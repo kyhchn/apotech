@@ -8,6 +8,8 @@ environment:
 dependencies: 
   cupertino_icons: ^1.0.2
   get: 4.6.6
+  dots_indicator: ^3.0.0
+  responsive_sizer: ^3.2.0
   flutter: 
     sdk: flutter
 
@@ -18,4 +20,18 @@ dev_dependencies:
 
 flutter: 
   uses-material-design: true
-
+  assets:
+    - assets/images/
+  fonts:
+    - family: Overpass
+      fonts:
+        - asset: assets/fonts/Overpass-Light.ttf
+          weight: 300
+        - asset: assets/fonts/Overpass-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Overpass-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Overpass-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/Overpass-Bold.ttf
+          weight: 700
