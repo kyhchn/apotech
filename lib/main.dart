@@ -15,6 +15,23 @@ void main() {
         debugShowCheckedModeBanner: false,
         getPages: AppPages.routes,
         theme: ThemeData(
+          appBarTheme: const AppBarTheme(
+            backgroundColor: Colors.white,
+            scrolledUnderElevation: 0,
+            elevation: 0,
+            iconTheme: IconThemeData(color: purpleText),
+          ),
+          inputDecorationTheme: InputDecorationTheme(
+            enabledBorder: UnderlineInputBorder(
+              borderSide: BorderSide(color: purpleText.withOpacity(0.1)),
+            ),
+            focusedBorder: const UnderlineInputBorder(
+              borderSide: BorderSide(color: purpleText),
+            ),
+            errorBorder: const UnderlineInputBorder(
+              borderSide: BorderSide(color: Colors.red),
+            ),
+          ),
           primaryColor: primaryColor,
           scaffoldBackgroundColor: Colors.white,
           fontFamily: 'Overpass',

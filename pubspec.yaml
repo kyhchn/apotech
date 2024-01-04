@@ -8,8 +8,10 @@ environment:
 dependencies: 
   cupertino_icons: ^1.0.2
   get: 4.6.6
-  dots_indicator: ^3.0.0
+  dots_indicator: ^3.0.0  
   responsive_sizer: ^3.2.0
+  flutter_svg: ^2.0.9
+  mask_text_input_formatter: ^2.7.0
   flutter: 
     sdk: flutter
 
