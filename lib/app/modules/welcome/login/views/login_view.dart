@@ -22,7 +22,7 @@ class LoginView extends GetView<LoginController> {
             children: [
               const Text(
                 'Welcome Back!',
-                style: h1,
+                style: ApotechTypography.h1,
               ),
               ApotechTextField(
                 controller: controller.userNameController,

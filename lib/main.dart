@@ -15,6 +15,7 @@ void main() {
         debugShowCheckedModeBanner: false,
         getPages: AppPages.routes,
         theme: ThemeData(
+          visualDensity: VisualDensity.adaptivePlatformDensity,
           appBarTheme: const AppBarTheme(
             backgroundColor: Colors.white,
             scrolledUnderElevation: 0,

@@ -8,6 +8,10 @@ import '../modules/welcome/bindings/welcome_binding.dart';
 import '../modules/welcome/login/bindings/login_binding.dart';
 import '../modules/welcome/login/views/login_view.dart';
 import '../modules/welcome/register/bindings/register_binding.dart';
+import '../modules/welcome/register/otp/bindings/otp_binding.dart';
+import '../modules/welcome/register/otp/loginsuccess/bindings/loginsuccess_binding.dart';
+import '../modules/welcome/register/otp/loginsuccess/views/loginsuccess_view.dart';
+import '../modules/welcome/register/otp/views/otp_view.dart';
 import '../modules/welcome/register/views/register_view.dart';
 import '../modules/welcome/views/welcome_view.dart';
 
@@ -43,6 +47,20 @@ class AppPages {
           name: _Paths.REGISTER,
           page: () => const RegisterView(),
           binding: RegisterBinding(),
+          children: [
+            GetPage(
+              name: _Paths.OTP,
+              page: () => const OtpView(),
+              binding: OtpBinding(),
+              children: [
+                GetPage(
+                  name: _Paths.LOGINSUCCESS,
+                  page: () => const LoginsuccessView(),
+                  binding: LoginsuccessBinding(),
+                ),
+              ],
+            ),
+          ],
         ),
       ],
     ),

@@ -36,7 +36,7 @@ class WelcomeView extends GetView<WelcomeController> {
                 const Text(
                   'Welcome to Apotech',
                   textAlign: TextAlign.center,
-                  style: h1,
+                  style: ApotechTypography.h1,
                 ),
                 const SizedBox(
                   height: 16,

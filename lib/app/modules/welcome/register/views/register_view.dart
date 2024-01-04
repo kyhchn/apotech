@@ -25,7 +25,7 @@ class RegisterView extends GetView<RegisterController> {
               children: [
                 const Text(
                   'Welcome Back!',
-                  style: h1,
+                  style: ApotechTypography.h1,
                 ),
                 const SizedBox(
                   height: 24,
@@ -82,7 +82,8 @@ class RegisterView extends GetView<RegisterController> {
                             fontSize: 16,
                             fontWeight: FontWeight.w700),
                       ),
-                      onPressed: () {}),
+                      onPressed: () => Get.toNamed(Routes.OTP,
+                          arguments: controller.phoneController.text)),
                 ),
                 const SizedBox(
                   height: 17,

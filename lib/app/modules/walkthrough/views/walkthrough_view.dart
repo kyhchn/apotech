@@ -122,7 +122,7 @@ class WalkthroughView extends GetView<WalkthroughController> {
               Text(
                 title,
                 textAlign: TextAlign.center,
-                style: h1,
+                style: ApotechTypography.h1,
               ),
               const SizedBox(
                 height: 16,
