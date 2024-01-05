@@ -118,10 +118,21 @@ class CategorylistView extends GetView<CategorylistController> {
                             crossAxisSpacing: 8.0),
                     itemCount: productList.length,
                     itemBuilder: (context, index) => productItem(
-                        productList[index]['title'] as String,
-                        productList[index]['imageAsset'] as String,
-                        productList[index]['rating'] as String,
-                        productList[index]['price'] as int)),
+                          productList[index]['title'] as String,
+                          productList[index]['imageAsset'] as String,
+                          productList[index]['rating'] as String,
+                          productList[index]['price'] as int,
+                          discount: index == 0
+                              ? 'SALE'
+                              : index == 1
+                                  ? '15% OFF'
+                                  : null,
+                          discountColor: index == 0
+                              ? const Color(0xFFFF5A5A)
+                              : index == 1
+                                  ? primaryYellow
+                                  : null,
+                        )),
               ),
               const SizedBox(
                 height: 38,
@@ -131,7 +142,8 @@ class CategorylistView extends GetView<CategorylistController> {
         ));
   }
 
-  Card productItem(String title, String imageAsset, String rating, int price) {
+  Card productItem(String title, String imageAsset, String rating, int price,
+      {String? discount, Color? discountColor}) {
     return Card(
       elevation: 0,
       color: Colors.white,
@@ -147,87 +159,129 @@ class CategorylistView extends GetView<CategorylistController> {
           'rating': rating,
           'price': price
         }),
-        child: Container(
-          color: Colors.transparent,
-          child: Column(
-            children: [
-              Container(
-                height: 155,
-                width: double.infinity,
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 20, vertical: 18),
-                decoration: BoxDecoration(
-                  color: const Color(0xFFF5F7FA),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: Image.asset(
-                  imageAsset,
-                  fit: BoxFit.cover,
-                ),
-              ),
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.fromLTRB(16, 14, 0, 16),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.only(right: 16),
-                        child: Text(
-                          title,
-                          maxLines: 2,
-                          overflow: TextOverflow.ellipsis,
-                          style: TextStyle(
-                              fontSize: 13,
-                              color: purpleText,
-                              fontWeight: FontWeight.w400),
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 4,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        child: Stack(
+          children: [
+            Container(
+              color: Colors.transparent,
+              child: Column(
+                children: [
+                  Container(
+                    height: 155,
+                    width: double.infinity,
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 20, vertical: 18),
+                    decoration: BoxDecoration(
+                      color: const Color(0xFFF5F7FA),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Image.asset(
+                      imageAsset,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(16, 14, 0, 16),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            formatCurrency(price),
-                            style: const TextStyle(
-                              color: purpleText,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 14,
+                          Padding(
+                            padding: const EdgeInsets.only(right: 16),
+                            child: Text(
+                              title,
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                              style: const TextStyle(
+                                  fontSize: 13,
+                                  color: purpleText,
+                                  fontWeight: FontWeight.w400),
                             ),
                           ),
-                          Container(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 8, vertical: 6),
-                            decoration: const BoxDecoration(
-                              color: Colors.yellow,
-                              borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(20),
-                                bottomLeft: Radius.circular(20),
+                          const SizedBox(
+                            height: 4,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                formatCurrency(price),
+                                style: const TextStyle(
+                                  color: purpleText,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 14,
+                                ),
                               ),
-                            ),
-                            child: Row(
-                              children: [
-                                Icon(Icons.star, color: Colors.white, size: 13),
-                                Text(
-                                  rating,
-                                  style: TextStyle(
-                                      fontSize: 13,
-                                      fontWeight: FontWeight.w300,
-                                      color: Colors.white),
-                                )
-                              ],
-                            ),
+                              Container(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 8, vertical: 6),
+                                decoration: const BoxDecoration(
+                                  color: Colors.yellow,
+                                  borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(20),
+                                    bottomLeft: Radius.circular(20),
+                                  ),
+                                ),
+                                child: Row(
+                                  children: [
+                                    const Icon(Icons.star,
+                                        color: Colors.white, size: 13),
+                                    Text(
+                                      rating,
+                                      style: const TextStyle(
+                                          fontSize: 13,
+                                          fontWeight: FontWeight.w300,
+                                          color: Colors.white),
+                                    )
+                                  ],
+                                ),
+                              )
+                            ],
                           )
                         ],
-                      )
-                    ],
-                  ),
-                ),
-              )
-            ],
-          ),
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            ),
+            (discount != null && discountColor != null)
+                ? Positioned(
+                    top: 0,
+                    left: 0,
+                    child: Container(
+                      width: 57.5,
+                      height: 57.5,
+                      decoration: const BoxDecoration(
+                        color: Colors.transparent, // Latar belakang transparan
+                        borderRadius: BorderRadius.only(
+                            topLeft:
+                                Radius.circular(10)), // Sudut yang dibulatkan
+                      ),
+                      child: CustomPaint(
+                        painter: TrianglePainter(discountColor),
+                      ),
+                    ),
+                  )
+                : const SizedBox(),
+            (discount != null && discountColor != null)
+                ? Positioned(
+                    top: 12,
+                    left: 2,
+                    child: Transform.rotate(
+                      angle: -45 *
+                          3.1415926535 /
+                          180, // Rotate text by -45 degrees
+                      child: Text(
+                        discount,
+                        style: const TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white),
+                      ),
+                    ),
+                  )
+                : const SizedBox(),
+          ],
         ),
       ),
     );

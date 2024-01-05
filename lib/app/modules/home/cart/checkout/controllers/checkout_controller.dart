@@ -1,3 +1,5 @@
+import 'package:apotech/app/data/model/address.dart';
+import 'package:apotech/app/data/model/payment.dart';
 import 'package:get/get.dart';
 
 class CheckoutController extends GetxController {
@@ -35,19 +37,4 @@ class CheckoutController extends GetxController {
   void onClose() {
     super.onClose();
   }
-}
-
-class Address {
-  String name;
-  String phone;
-  String address;
-
-  Address({required this.name, required this.phone, required this.address});
-}
-
-class Payment {
-  String name;
-  String image;
-
-  Payment({required this.name, required this.image});
 }

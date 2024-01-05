@@ -393,7 +393,7 @@ class HomesectionView extends GetView {
                       child: const CircleAvatar(
                         radius: 21,
                         backgroundImage:
-                            AssetImage('assets/images/login_success.png'),
+                            AssetImage('assets/images/dummy_pp.jpg'),
                       ),
                     ),
                     Row(
