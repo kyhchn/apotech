@@ -15,6 +15,7 @@ class ProfilesectionView extends GetView {
     return Scaffold(
       appBar: AppBar(
         titleSpacing: 24,
+        automaticallyImplyLeading: false,
         title: const Text('My Profile'),
       ),
       body: Column(
