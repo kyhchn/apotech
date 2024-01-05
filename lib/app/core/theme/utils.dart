@@ -4,3 +4,10 @@ String formatCurrency(int value) {
         (Match match) => '${match[1]}.',
       )}';
 }
+
+String? validateIsNotEmpty(String? value) {
+  if (value == null || value.isEmpty) {
+    return 'Make sure you fill the form';
+  }
+  return null;
+}

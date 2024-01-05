@@ -13,7 +13,7 @@ class OtpView extends GetView<OtpController> {
   const OtpView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    final phoneNumber = Get.arguments as String;
+    final phoneNumber = Get.arguments['phone'];
     return Scaffold(
       appBar: AppBar(),
       body: Padding(
@@ -40,39 +40,47 @@ class OtpView extends GetView<OtpController> {
             const SizedBox(
               height: 25,
             ),
-            SizedBox(
-              width: double.infinity,
-              child: Pinput(
-                controller: controller.otpController,
-                onCompleted: (value) {
-                  controller.otpController.text = value;
-                },
-                length: 6,
-                defaultPinTheme: PinTheme(
-                  margin: const EdgeInsets.symmetric(horizontal: 7),
-                  textStyle: TextStyle(
-                      color: purpleText.withOpacity(0.45),
-                      fontSize: 24,
-                      fontWeight: FontWeight.w400),
-                  height: 50,
-                  width: 40,
-                  decoration: BoxDecoration(
-                    border: Border(
-                      bottom: BorderSide(
-                          color: purpleText.withOpacity(0.1), width: 1),
+            Form(
+              key: controller.key,
+              child: SizedBox(
+                width: double.infinity,
+                child: Pinput(
+                  validator: (String? value) {
+                    if (value!.isEmpty || value.length != 6) {
+                      return 'Please enter the code';
+                    }
+                  },
+                  controller: controller.otpController,
+                  onCompleted: (value) {
+                    controller.otpController.text = value;
+                  },
+                  length: 6,
+                  defaultPinTheme: PinTheme(
+                    margin: const EdgeInsets.symmetric(horizontal: 7),
+                    textStyle: TextStyle(
+                        color: purpleText.withOpacity(0.45),
+                        fontSize: 24,
+                        fontWeight: FontWeight.w400),
+                    height: 50,
+                    width: 40,
+                    decoration: BoxDecoration(
+                      border: Border(
+                        bottom: BorderSide(
+                            color: purpleText.withOpacity(0.1), width: 1),
+                      ),
                     ),
                   ),
-                ),
-                focusedPinTheme: PinTheme(
-                  height: 50,
-                  width: 40,
-                  textStyle: TextStyle(
-                      color: purpleText.withOpacity(0.45),
-                      fontSize: 24,
-                      fontWeight: FontWeight.w400),
-                  decoration: const BoxDecoration(
-                    border: Border(
-                      bottom: BorderSide(color: purpleText, width: 2),
+                  focusedPinTheme: PinTheme(
+                    height: 50,
+                    width: 40,
+                    textStyle: TextStyle(
+                        color: purpleText.withOpacity(0.45),
+                        fontSize: 24,
+                        fontWeight: FontWeight.w400),
+                    decoration: const BoxDecoration(
+                      border: Border(
+                        bottom: BorderSide(color: purpleText, width: 2),
+                      ),
                     ),
                   ),
                 ),
@@ -92,7 +100,11 @@ class OtpView extends GetView<OtpController> {
                         fontSize: 16,
                         fontWeight: FontWeight.bold),
                   ),
-                  onPressed: () => Get.toNamed(Routes.LOGINSUCCESS)),
+                  onPressed: () {
+                    if (controller.key.currentState!.validate()) {
+                      Get.offNamed(Routes.LOGINSUCCESS);
+                    }
+                  }),
             ),
             const SizedBox(
               height: 23,
@@ -108,8 +120,8 @@ class OtpView extends GetView<OtpController> {
                   onPressed: () {},
                   child: Text(
                     'Resend code',
-                    style:
-                        ApotechTypography.defafult.copyWith(color: primaryColor),
+                    style: ApotechTypography.defafult
+                        .copyWith(color: primaryColor),
                   )),
             )
           ],

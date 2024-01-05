@@ -8,6 +8,7 @@ class RegisterController extends GetxController {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final numberFormat = MaskTextInputFormatter(mask: '+62 ### ### ####');
+  final key = GlobalKey<FormState>();
 
   @override
   void onInit() {

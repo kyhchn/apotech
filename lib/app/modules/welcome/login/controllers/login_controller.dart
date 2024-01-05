@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 class LoginController extends GetxController {
   final userNameController = TextEditingController();
   final passwordController = TextEditingController();
-
+  final key = GlobalKey<FormState>();
   final count = 0.obs;
   @override
   void onInit() {

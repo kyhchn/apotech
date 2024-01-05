@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 
 class OtpController extends GetxController {
   final otpController = TextEditingController();
+  final key = GlobalKey<FormState>();
   @override
   void onInit() {
     super.onInit();

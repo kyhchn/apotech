@@ -16,7 +16,7 @@ void main() async {
     ResponsiveSizer(
       builder: (context, orientation, screenType) => GetMaterialApp(
         title: "Application",
-        initialRoute: Routes.HOME,
+        initialRoute: Routes.WALKTHROUGH,
         debugShowCheckedModeBanner: false,
         getPages: AppPages.routes,
         theme: ThemeData(
