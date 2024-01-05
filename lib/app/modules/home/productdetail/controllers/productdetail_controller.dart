@@ -1,9 +1,8 @@
 import 'package:get/get.dart';
 
 class ProductdetailController extends GetxController {
-  //TODO: Implement ProductdetailController
-
-  final count = 0.obs;
+  final carouselIdx = 0.obs;
+  final packageSizeIdx = 0.obs;
   @override
   void onInit() {
     super.onInit();
@@ -18,6 +17,4 @@ class ProductdetailController extends GetxController {
   void onClose() {
     super.onClose();
   }
-
-  void increment() => count.value++;
 }

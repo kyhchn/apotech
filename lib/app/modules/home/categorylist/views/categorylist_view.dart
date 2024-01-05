@@ -1,5 +1,6 @@
 import 'package:apotech/app/core/theme/colors.dart';
 import 'package:apotech/app/core/theme/utils.dart';
+import 'package:apotech/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -142,7 +143,12 @@ class CategorylistView extends GetView<CategorylistController> {
       ),
       clipBehavior: Clip.antiAlias,
       child: InkWell(
-        onTap: ()=>,
+        onTap: () => Get.toNamed(Routes.PRODUCTDETAIL, arguments: {
+          'title': title,
+          'imageAsset': imageAsset,
+          'rating': rating,
+          'price': price
+        }),
         child: Container(
           color: Colors.transparent,
           child: Column(
