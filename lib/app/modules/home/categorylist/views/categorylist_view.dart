@@ -48,8 +48,6 @@ class CategorylistView extends GetView<CategorylistController> {
         appBar: AppBar(
           title: const Text(
             'Diabetes Care',
-            style: TextStyle(
-                color: purpleText, fontSize: 16, fontWeight: FontWeight.w700),
           ),
         ),
         body: SingleChildScrollView(

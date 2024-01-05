@@ -2,6 +2,7 @@ import 'package:apotech/app/core/theme/colors.dart';
 import 'package:apotech/app/core/theme/constant.dart';
 import 'package:apotech/app/core/theme/typography.dart';
 import 'package:apotech/app/core/theme/utils.dart';
+import 'package:apotech/app/routes/app_pages.dart';
 import 'package:apotech/app/widgets/apotech_button.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:dots_indicator/dots_indicator.dart';
@@ -362,20 +363,20 @@ class ProductdetailView extends GetView<ProductdetailController> {
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 48,
                   ),
                   SizedBox(
                     width: double.infinity,
                     child: ApotechButton(
-                        child: Text(
+                        child: const Text(
                           'GO TO CART',
                           style: TextStyle(
                               color: Colors.white,
                               fontSize: 16,
                               fontWeight: FontWeight.bold),
                         ),
-                        onPressed: () {}),
+                        onPressed: () => Get.toNamed(Routes.CART)),
                   ),
                   const SizedBox(
                     height: 50,
