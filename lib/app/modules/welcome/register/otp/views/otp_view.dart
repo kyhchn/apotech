@@ -110,14 +110,16 @@ class OtpView extends GetView<OtpController> {
               height: 23,
             ),
             Center(
-              child: Text(
-                'The verify code will expire in 00:59',
-                style: ApotechTypography.defafult,
+              child: Obx(
+                () => Text(
+                  'The verify code will expire in 00:${controller.start.value}',
+                  style: ApotechTypography.defafult,
+                ),
               ),
             ),
             Center(
               child: TextButton(
-                  onPressed: () {},
+                  onPressed: () => controller.resetTimer(),
                   child: Text(
                     'Resend code',
                     style: ApotechTypography.defafult
