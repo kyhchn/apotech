@@ -1,6 +1,10 @@
 import 'package:get/get.dart';
 
 import '../modules/home/bindings/home_binding.dart';
+import '../modules/home/categorylist/bindings/categorylist_binding.dart';
+import '../modules/home/categorylist/views/categorylist_view.dart';
+import '../modules/home/productdetail/bindings/productdetail_binding.dart';
+import '../modules/home/productdetail/views/productdetail_view.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/walkthrough/bindings/walkthrough_binding.dart';
 import '../modules/walkthrough/views/walkthrough_view.dart';
@@ -27,6 +31,18 @@ class AppPages {
       name: _Paths.HOME,
       page: () => const HomeView(),
       binding: HomeBinding(),
+      children: [
+        GetPage(
+          name: _Paths.CATEGORYLIST,
+          page: () => const CategorylistView(),
+          binding: CategorylistBinding(),
+        ),
+        GetPage(
+          name: _Paths.PRODUCTDETAIL,
+          page: () => const ProductdetailView(),
+          binding: ProductdetailBinding(),
+        ),
+      ],
     ),
     GetPage(
       name: _Paths.WALKTHROUGH,

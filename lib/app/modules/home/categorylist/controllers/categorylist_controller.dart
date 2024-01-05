@@ -1,10 +1,9 @@
-import 'package:carousel_slider/carousel_controller.dart';
 import 'package:get/get.dart';
 
-class HomeController extends GetxController {
-  final carouselIndex = 0.obs;
-  final homeIndex = 0.obs;
+class CategorylistController extends GetxController {
+  //TODO: Implement CategorylistController
 
+  final count = 0.obs;
   @override
   void onInit() {
     super.onInit();
@@ -19,4 +18,6 @@ class HomeController extends GetxController {
   void onClose() {
     super.onClose();
   }
+
+  void increment() => count.value++;
 }

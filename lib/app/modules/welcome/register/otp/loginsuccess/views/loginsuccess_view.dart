@@ -1,5 +1,6 @@
 import 'package:apotech/app/core/theme/colors.dart';
 import 'package:apotech/app/core/theme/typography.dart';
+import 'package:apotech/app/routes/app_pages.dart';
 import 'package:apotech/app/widgets/apotech_button.dart';
 import 'package:flutter/material.dart';
 
@@ -65,7 +66,7 @@ class LoginsuccessView extends GetView<LoginsuccessController> {
                           fontWeight: FontWeight.w700,
                           fontSize: 16),
                     ),
-                    onPressed: () {}),
+                    onPressed: () => Get.offAllNamed(Routes.HOME)),
               ),
             ),
             const SizedBox(

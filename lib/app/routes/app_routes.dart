@@ -11,6 +11,8 @@ abstract class Routes {
   static const OTP = _Paths.WELCOME + _Paths.REGISTER + _Paths.OTP;
   static const LOGINSUCCESS =
       _Paths.WELCOME + _Paths.REGISTER + _Paths.OTP + _Paths.LOGINSUCCESS;
+  static const CATEGORYLIST = _Paths.HOME + _Paths.CATEGORYLIST;
+  static const PRODUCTDETAIL = _Paths.HOME + _Paths.PRODUCTDETAIL;
 }
 
 abstract class _Paths {
@@ -22,4 +24,6 @@ abstract class _Paths {
   static const REGISTER = '/register';
   static const OTP = '/otp';
   static const LOGINSUCCESS = '/loginsuccess';
+  static const CATEGORYLIST = '/categorylist';
+  static const PRODUCTDETAIL = '/productdetail';
 }
