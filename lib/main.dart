@@ -1,5 +1,6 @@
 import 'package:apotech/app/core/theme/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'package:get/get.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
@@ -18,7 +19,7 @@ void main() {
           visualDensity: VisualDensity.adaptivePlatformDensity,
           appBarTheme: const AppBarTheme(
             backgroundColor: Colors.white,
-            scrolledUnderElevation: 0,
+            scrolledUnderElevation: 1,
             elevation: 0,
             titleTextStyle: TextStyle(
                 color: purpleText, fontSize: 16, fontWeight: FontWeight.w700),

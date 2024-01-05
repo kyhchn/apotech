@@ -3,6 +3,8 @@ import 'package:get/get.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/cart/bindings/cart_binding.dart';
 import '../modules/home/cart/checkout/bindings/checkout_binding.dart';
+import '../modules/home/cart/checkout/checkoutsuccess/bindings/checkoutsuccess_binding.dart';
+import '../modules/home/cart/checkout/checkoutsuccess/views/checkoutsuccess_view.dart';
 import '../modules/home/cart/checkout/views/checkout_view.dart';
 import '../modules/home/cart/views/cart_view.dart';
 import '../modules/home/categorylist/bindings/categorylist_binding.dart';
@@ -55,6 +57,13 @@ class AppPages {
               name: _Paths.CHECKOUT,
               page: () => const CheckoutView(),
               binding: CheckoutBinding(),
+              children: [
+                GetPage(
+                  name: _Paths.CHECKOUTSUCCESS,
+                  page: () => const CheckoutsuccessView(),
+                  binding: CheckoutsuccessBinding(),
+                ),
+              ],
             ),
           ],
         ),

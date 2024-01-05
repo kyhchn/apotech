@@ -1,6 +1,7 @@
 import 'package:apotech/app/core/theme/colors.dart';
 import 'package:apotech/app/core/theme/typography.dart';
 import 'package:apotech/app/core/theme/utils.dart';
+import 'package:apotech/app/routes/app_pages.dart';
 import 'package:apotech/app/widgets/apotech_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -226,7 +227,10 @@ class CheckoutView extends GetView<CheckoutController> {
                           fontSize: 16,
                           fontWeight: FontWeight.bold),
                     ),
-                    onPressed: () {}),
+                    onPressed: () {
+                      Get.offNamedUntil(Routes.CHECKOUTSUCCESS,
+                          (route) => route.settings.name == Routes.HOME);
+                    }),
               ),
               const SizedBox(
                 height: 12,
