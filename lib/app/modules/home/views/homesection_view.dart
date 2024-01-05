@@ -2,6 +2,7 @@ import 'package:apotech/app/core/theme/colors.dart';
 import 'package:apotech/app/core/theme/typography.dart';
 import 'package:apotech/app/core/theme/utils.dart';
 import 'package:apotech/app/modules/home/controllers/home_controller.dart';
+import 'package:apotech/app/routes/app_pages.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
@@ -230,86 +231,96 @@ class HomesectionView extends GetView {
           borderRadius: BorderRadius.circular(10),
         ),
         clipBehavior: Clip.antiAlias,
-        child: Container(
-          color: Colors.white,
-          width: 50.w,
-          height: double.infinity,
-          child: Column(
-            children: [
-              Container(
-                width: double.infinity,
-                height: 135,
-                decoration: BoxDecoration(
-                  color: const Color(0xFFEEEEF0),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: Image.asset(
-                  asset,
-                  fit: BoxFit.fitHeight,
-                ),
-              ),
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.fromLTRB(16, 14, 0, 16),
-                  child: Column(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(right: 16),
-                        child: Text(
-                          title,
-                          maxLines: 2,
-                          overflow: TextOverflow.ellipsis,
-                          style: const TextStyle(
-                              fontSize: 13,
-                              color: purpleText,
-                              fontWeight: FontWeight.w400),
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 4,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            formatCurrency(price),
-                            style: const TextStyle(
-                              color: purpleText,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 14,
-                            ),
-                          ),
-                          Container(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 8, vertical: 6),
-                            decoration: const BoxDecoration(
-                              color: Colors.yellow,
-                              borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(20),
-                                bottomLeft: Radius.circular(20),
-                              ),
-                            ),
-                            child: Row(
-                              children: [
-                                const Icon(Icons.star,
-                                    color: Colors.white, size: 13),
-                                Text(
-                                  rating,
-                                  style: const TextStyle(
-                                      fontSize: 13,
-                                      fontWeight: FontWeight.w300,
-                                      color: Colors.white),
-                                )
-                              ],
-                            ),
-                          )
-                        ],
-                      )
-                    ],
+        child: InkWell(
+          onTap: () {
+            Get.toNamed(Routes.PRODUCTDETAIL, arguments: {
+              'title': title,
+              'price': price,
+              'rating': rating,
+              'imageAsset': asset
+            });
+          },
+          child: Container(
+            color: Colors.white,
+            width: 50.w,
+            height: double.infinity,
+            child: Column(
+              children: [
+                Container(
+                  width: double.infinity,
+                  height: 135,
+                  decoration: BoxDecoration(
+                    color: const Color(0xFFEEEEF0),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Image.asset(
+                    asset,
+                    fit: BoxFit.fitHeight,
                   ),
                 ),
-              )
-            ],
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(16, 14, 0, 16),
+                    child: Column(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(right: 16),
+                          child: Text(
+                            title,
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
+                            style: const TextStyle(
+                                fontSize: 13,
+                                color: purpleText,
+                                fontWeight: FontWeight.w400),
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 4,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              formatCurrency(price),
+                              style: const TextStyle(
+                                color: purpleText,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 14,
+                              ),
+                            ),
+                            Container(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 8, vertical: 6),
+                              decoration: const BoxDecoration(
+                                color: Colors.yellow,
+                                borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(20),
+                                  bottomLeft: Radius.circular(20),
+                                ),
+                              ),
+                              child: Row(
+                                children: [
+                                  const Icon(Icons.star,
+                                      color: Colors.white, size: 13),
+                                  Text(
+                                    rating,
+                                    style: const TextStyle(
+                                        fontSize: 13,
+                                        fontWeight: FontWeight.w300,
+                                        color: Colors.white),
+                                  )
+                                ],
+                              ),
+                            )
+                          ],
+                        )
+                      ],
+                    ),
+                  ),
+                )
+              ],
+            ),
           ),
         ));
   }
@@ -406,7 +417,7 @@ class HomesectionView extends GetView {
                           color: Colors.transparent,
                           child: InkWell(
                             borderRadius: BorderRadius.circular(100),
-                            onTap: () {},
+                            onTap: () => Get.toNamed(Routes.CART),
                             child: SvgPicture.asset(
                               'assets/images/ic_cart.svg',
                               width: 24,

@@ -79,7 +79,13 @@ class HomeView extends GetView<HomeController> {
                   label: 'Profile'),
             ],
             currentIndex: controller.homeIndex.value,
-            onTap: (index) => controller.homeIndex.value = index,
+            onTap: (index) {
+              if (index == 3) {
+                Get.toNamed(Routes.CART);
+                return;
+              }
+              controller.homeIndex.value = index;
+            },
             type: BottomNavigationBarType.fixed,
           ),
         ),
